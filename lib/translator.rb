@@ -23,7 +23,6 @@ def get_japanese_emoticon (file_path, west_emot)
   else
     return "Sorry, that emoticon was not found"
   end
-
 end
 
 def get_english_meaning
