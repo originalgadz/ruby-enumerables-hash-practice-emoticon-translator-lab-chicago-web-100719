@@ -1,7 +1,19 @@
-# require modules here
+require "yaml"
+require "pry"
 
-def load_library
-  # code goes here
+def load_library (file_path)
+  translator = YAML.load_file(file_path)
+  new_translator = {}
+  translator.each do |emotion, emoticons|
+    if new_translator["get_meaning"]
+      new_translator["get_meaning"][emoticons[1]] = emotion
+      new_translator["get_emoticon"][emoticons[0]] = emoticons[1]
+    else  
+      new_translator["get_meaning"]= {emoticons[1] => emotion}
+      new_translator["get_emoticon"] = {emoticons[0] => emoticons[1]}
+    end
+  end
+  return new_translator
 end
 
 def get_japanese_emoticon
